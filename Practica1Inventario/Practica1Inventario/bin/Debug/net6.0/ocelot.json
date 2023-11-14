@@ -1,0 +1,34 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/Productos", //ruta a la que queremos llamar 
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [ //en que host y en que puerto esta corriendo
+        {
+          "Host": "localhost",
+          "Port": 7127
+        }
+      ],
+      "UpstreamPathTemplate": "/producto", //como queremos renombrar la ruta
+      "UpstreamHttpMethod": [ "Get" ] //Solo permite peticiones get
+    },
+    { //Se repite para cada modelo
+      "DownstreamPathTemplate": "/api/Inventarios",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7127
+        }
+      ],
+      "UpstreamPathTemplate": "/inventario", 
+      "UpstreamHttpMethod": [ "Get" ] 
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https//localhost:7198"
+  }
+}
+/*  
+  depurar, correr nueva instancia
+*/

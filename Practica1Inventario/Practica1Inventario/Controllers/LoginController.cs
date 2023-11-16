@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Practica1Inventario.DTO;
+using Practica1Inventario.Model;
 
 namespace Practica1Inventario.Controllers
 {
@@ -18,7 +18,6 @@ namespace Practica1Inventario.Controllers
                     regreso = true;
             }
             return regreso;
-
         }
     }
 }

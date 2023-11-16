@@ -26,7 +26,7 @@ namespace Practica1Inventario.Controllers
         }
 
         [HttpPost]
-        public JsonResult insertInv([FromBody] Almacen arg) //Insertar datos a partir del cuerpo
+        public JsonResult insertAlm([FromBody] Almacen arg) //Insertar datos a partir del cuerpo
         {
             bool resultado = false;
             using (AlmacenContext almacenC = new AlmacenContext())
@@ -39,7 +39,7 @@ namespace Practica1Inventario.Controllers
         }
 
         [HttpPatch]
-        public JsonResult updateInv([FromBody] Almacen arg) //Modificar un almacen a partir del cuerpo
+        public JsonResult updateAlm([FromBody] Almacen arg) //Modificar un almacen a partir del cuerpo
         {
             bool resultado = false;
             using (AlmacenContext almacenC = new AlmacenContext())
@@ -57,7 +57,7 @@ namespace Practica1Inventario.Controllers
         }
 
         [HttpDelete]
-        public JsonResult deleteInv([FromBody] Almacen arg) //Eliminar un almacen a partir del cuerpo
+        public JsonResult deleteAlm([FromBody] Almacen arg) //Eliminar un almacen a partir del cuerpo
         {
             bool resultado = false;
             using (AlmacenContext almacenC = new AlmacenContext())
@@ -71,6 +71,31 @@ namespace Practica1Inventario.Controllers
                 }
             }
             return new JsonResult(resultado);
+        }
+
+        // Ver inventarios por almacén
+        [HttpGet("Invent/{idAlmacen}")]
+        public JsonResult GetInventarioPorAlmacen(int idAlmacen)
+        {
+            List<Inventario> inventEncontrados = new List<Inventario>();
+            using (AlmacenContext almacenC = new AlmacenContext())
+            {
+                inventEncontrados = almacenC.inventarios.Where(i => i.NumAlmacen == idAlmacen).ToList(); // Filtra los inventarios por idAlmacen
+            }
+            return new JsonResult(inventEncontrados);
+        }
+
+        // Ver productos en almacén
+        [HttpGet("Product/{idAlmacen}")]
+        public JsonResult GetProductoEnAlmacen(int idAlmacen)
+        {
+            List<Producto> prodEncontrados = new List<Producto>();
+            using (AlmacenContext almacenC = new AlmacenContext())
+            {
+                var numerosInventario = almacenC.inventarios.Where(i => i.NumAlmacen == idAlmacen).Select(i => i.Numero).ToList(); // Obtiene los números de inventario de los inventarios encontrados
+                prodEncontrados = almacenC.productos.Where(p => numerosInventario.Contains(p.NumInventario)).ToList(); // Filtra los productos por los números de inventario
+            }
+            return new JsonResult(prodEncontrados);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Practica1Inventario.Controllers
             }
             return new JsonResult(usuarios);
         }
-        /*
+        
         [HttpPost]
         public JsonResult insertUser([FromBody] Usuario arg) //Insertar datos a partir del cuerpo
         {
@@ -70,6 +70,6 @@ namespace Practica1Inventario.Controllers
                 }
             }
             return new JsonResult(resultado);
-        }*/
+        }
     }
 }

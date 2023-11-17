@@ -1,6 +1,6 @@
 using Practica1Inventario.Context;
-//using Ocelot.Dependencylnjection;
-//using Ocelot.Middleware;
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,9 +13,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//OCELOT
-builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
-//builder.Services.AddOcelot();
+builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true); // Configuracion del ocelot
+builder.Services.AddOcelot(); // Se agrega ocelot a los servicios
 
 var app = builder.Build();
 
@@ -28,7 +27,8 @@ if (app.Environment.IsDevelopment())
 
 contextoAlmacen.Database.EnsureCreated(); // Crear la BD si no existe y verificar que exista
 
-//app.UseOcelot().Wait(); //Espera a que se realize para poder continuar 
+app.UseOcelot().Wait(); // Se agrega para que la aplicacion use ocelot
+                        // es una peticion asíncrona y espera a que se realice para poder continuar
 
 app.UseHttpsRedirection();
 

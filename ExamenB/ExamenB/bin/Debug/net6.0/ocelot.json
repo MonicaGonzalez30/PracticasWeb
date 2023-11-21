@@ -1,0 +1,79 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/Pacientes",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7194
+        }
+      ],
+      "UpstreamPathTemplate": "/Pacientes",
+      "UpstreamHttpMethod": [] //Admite cualquier peticion
+    },
+    {
+      "DownstreamPathTemplate": "/PacientesDTO",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7194
+        }
+      ],
+      "UpstreamPathTemplate": "/PacientesDTO",
+      "UpstreamHttpMethod": []
+    },
+    {
+      "DownstreamPathTemplate": "/Expedientes",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7194
+        }
+      ],
+      "UpstreamPathTemplate": "/Expedientes",
+      "UpstreamHttpMethod": []
+    },
+    {
+      "DownstreamPathTemplate": "/ExpedientesDTO",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7194
+        }
+      ],
+      "UpstreamPathTemplate": "/ExpedientesDTO",
+      "UpstreamHttpMethod": []
+    },
+    {
+      "DownstreamPathTemplate": "/Consultas",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7194
+        }
+      ],
+      "UpstreamPathTemplate": "/Consultas",
+      "UpstreamHttpMethod": []
+    },
+    {
+      "DownstreamPathTemplate": "/ConsultasDTO",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7194
+        }
+      ],
+      "UpstreamPathTemplate": "/ConsultasDTO",
+      "UpstreamHttpMethod": []
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7194"
+  }
+}

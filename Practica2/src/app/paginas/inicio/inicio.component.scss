@@ -1,0 +1,19 @@
+.row{
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+}
+
+img{
+    width: 100%;
+}
+
+.imagen{
+    padding: 5%;
+}
+
+.texto{
+    text-align: justify;
+    padding-left: 5%;
+    padding-right: 5%;
+}
